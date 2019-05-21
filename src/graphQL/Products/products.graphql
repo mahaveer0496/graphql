@@ -1,2 +1,16 @@
+enum Category {
+  Electronics
+  Clothes
+  Furniture
+}
 
+extend type Product {
+  name: String!
+  description: String
+  price: Int!
+  category: Category!
+}
 
+extend type Query {
+  getAllProducts: [Product!]!
+}

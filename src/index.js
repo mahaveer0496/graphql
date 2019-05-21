@@ -1,4 +1,4 @@
-import {GraphQLServer} from 'graphql-yoga'
+import {GraphQLServer, MockList} from 'graphql-yoga'
 
 const typeDefs = `
   type Query {
