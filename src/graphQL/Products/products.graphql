@@ -4,13 +4,13 @@ enum Category {
   Furniture
 }
 
-extend type Product {
+type Product {
   name: String!
   description: String
   price: Int!
   category: Category!
 }
 
-extend type Query {
+type Query {
   getAllProducts: [Product!]!
 }

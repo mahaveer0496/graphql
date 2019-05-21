@@ -1,14 +1,10 @@
 import {GraphQLServer, MockList} from 'graphql-yoga'
-
-const typeDefs = `
-  type Query {
-    hello(name: String): String!
-  }
-`
+import gqlLoader from './utils/gqlLoader'
+const typeDefs = gqlLoader('Products/products.graphql')
 
 const resolvers = {
   Query: {
-    hello: (_, {name}) => `Hello ${name || 'World'}`,
+    getAllProducts: () => [],
   },
 }
 
