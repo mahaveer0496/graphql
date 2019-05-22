@@ -1,22 +1,13 @@
-let products = [
-  {
-    name: 'abc',
-    description: 'bla bla bla',
-    category: 'Electronics',
-    price: 20.2,
-  },
-]
 export default {
   Query: {
-    getAllProducts() {
-      return products
+    async getAllProducts(_, __, ctx) {
+      return await ctx.productModel.find()
     },
   },
   Mutation: {
-    createProduct(root, args, ctx) {
-      console.log({ctx})
-      products = [...products, args.input]
-      return args.input
+    async createProduct(root, args, ctx) {
+      return await ctx.productModel.create(args.input)
     },
   },
+  Product: {},
 }
