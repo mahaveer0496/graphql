@@ -18,6 +18,6 @@ input SignupInput {
 }
 
 extend type Query {
-  login(input: LoginInput): User!
-  signup(input: SignupInput): User!
+  login(input: LoginInput!): User!
+  signup(input: SignupInput!): User!
 }
