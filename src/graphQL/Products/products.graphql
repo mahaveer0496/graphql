@@ -6,11 +6,22 @@ enum Category {
 
 type Product {
   name: String!
-  description: String
-  price: Int!
+  price: Float!
   category: Category!
+  description: String
+}
+
+input NewProductInput {
+  name: String!
+  price: Float!
+  category: Category!
+  description: String
 }
 
 type Query {
   getAllProducts: [Product!]!
+}
+
+type Mutation {
+  createProduct(input: NewProductInput!): Product!
 }
