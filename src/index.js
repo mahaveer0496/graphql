@@ -1,6 +1,8 @@
 import {GraphQLServer, MockList} from 'graphql-yoga'
 import gqlLoader from './utils/gqlLoader'
-const typeDefs = gqlLoader('Products/products.graphql')
+const typeDefs = [gqlLoader('Products/products.graphql')].join(
+  ' ',
+)
 
 const resolvers = {
   Query: {
