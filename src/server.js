@@ -6,14 +6,13 @@ import {GraphQLServer} from 'graphql-yoga'
 import gqlLoader from './utils/gqlLoader'
 import connectToDB from './db/connect'
 
-import productResolvers from './graphQL/Products/products.resolvers'
-import productModel from './graphQL/Products/products.model'
-
+import productResolvers from './graphQL/Products/product.resolvers'
+import productModel from './graphQL/Products/product.model'
 
 connectToDB()
 
 const server = new GraphQLServer({
-  typeDefs: [gqlLoader('Products/products.graphql')].join(' '),
+  typeDefs: [gqlLoader('Products/product.graphql')].join(' '),
   resolvers: merge(productResolvers),
   context: {
     productModel,

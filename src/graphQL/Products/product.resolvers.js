@@ -5,7 +5,7 @@ export default {
     },
   },
   Mutation: {
-    async createProduct(root, args, ctx) {
+    async createProduct(_, args, ctx) {
       return await ctx.productModel.create(args.input)
     },
   },

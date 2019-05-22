@@ -1,0 +1,23 @@
+type User {
+  name: String!
+  email: String!
+  joinDate: String
+  role: String
+}
+
+input LoginInput {
+  email: String!
+  password: String!
+}
+
+input SignupInput {
+  name: String!
+  email: String!
+  password: String!
+  role: String
+}
+
+extend type Query {
+  login(input: LoginInput): User!
+  signup(input: SignupInput): User!
+}
