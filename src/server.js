@@ -10,6 +10,7 @@ import connectToDB from './db/connect'
 
 import productResolvers from './graphQL/Products/product.resolver'
 import productModel from './graphQL/Products/product.model'
+import productDataLoader from './graphQL/Products/product.dataload'
 
 import userResolvers from './graphQL/User/user.resolver'
 import userModel from './graphQL/User/user.model'
@@ -29,6 +30,7 @@ const server = new GraphQLServer({
       productModel,
       userModel,
       token,
+      productDataLoader: productDataLoader(),
     }
   },
 })
