@@ -1,8 +1,10 @@
 // Packages
 import {merge} from 'lodash'
 import {GraphQLServer} from 'graphql-yoga'
+import jwt from 'jsonwebtoken'
 
 // custom imports
+
 import gqlLoader from './utils/gqlLoader'
 import connectToDB from './db/connect'
 
@@ -11,6 +13,7 @@ import productModel from './graphQL/Products/product.model'
 
 import userResolvers from './graphQL/User/user.resolver'
 import userModel from './graphQL/User/user.model'
+
 connectToDB()
 
 const server = new GraphQLServer({
@@ -19,9 +22,14 @@ const server = new GraphQLServer({
     gqlLoader('User/user.graphql'),
   ].join(' '),
   resolvers: merge(productResolvers, userResolvers),
-  context: {
-    productModel,
-    userModel,
+  context: async ({request}) => {
+    const token = request.headers.authorization
+
+    return {
+      productModel,
+      userModel,
+      token,
+    }
   },
 })
 

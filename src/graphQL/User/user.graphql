@@ -1,8 +1,14 @@
+enum Role {
+  admin
+  support
+}
+
 type User {
   name: String!
   email: String!
   joinDate: String
-  role: String
+  role: Role
+  token: String
 }
 
 input LoginInput {
@@ -14,10 +20,12 @@ input SignupInput {
   name: String!
   email: String!
   password: String!
-  role: String
 }
 
 extend type Query {
   login(input: LoginInput!): User!
+}
+
+extend type Mutation {
   signup(input: SignupInput!): User!
 }
