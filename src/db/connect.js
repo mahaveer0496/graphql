@@ -5,7 +5,10 @@ export default function connect(
 ){
   return mongoose.connect(
     url,
-    {useNewUrlParser: true},
+    {
+      useNewUrlParser: true,
+      useCreateIndex: true,
+    },
     (err) => {
       if (err) console.error(err)
       else console.log(`connected to mongoDB at ${url}`)

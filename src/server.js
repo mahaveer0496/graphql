@@ -22,10 +22,10 @@ const server = new GraphQLServer({
     gqlLoader('Products/product.graphql'),
     gqlLoader('User/user.graphql'),
   ].join(' '),
-  resolvers: merge(productResolvers, userResolvers),
+  resolvers: merge(productResolvers),
   context: async ({request}) => {
     const token = request.headers.authorization
-
+    
     return {
       productModel,
       userModel,

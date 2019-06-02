@@ -71,12 +71,12 @@ input UpdateProductInput {
   range: String
 }
 
-extend type Query {
+type Query {
   products: [Product]!
   product(id: ID!): Product!
 }
 
-extend type Mutation {
+type Mutation {
   newProduct(input: NewProductInput!): Product!
   updateProduct(id: ID!, input: UpdateProductInput!): Product!
   removeProduct(id: ID!): Product!

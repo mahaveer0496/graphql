@@ -1,5 +1,5 @@
-import {Schema, model} from 'mongoose'
-
+import {Schema, model, SchemaTypes} from 'mongoose'
+import validator from 'validator'
 const categoryEnum = ['Electronics', 'Clothes', 'Furniture']
 const productSchema = new Schema(
   {
@@ -15,7 +15,7 @@ const productSchema = new Schema(
     },
     image: {
       type: String,
-      required: true,
+      required: false,
       default: 'https://via.placeholder.com/150',
       validate: [
         (v) => validator.isURL(v),
@@ -48,9 +48,14 @@ const productSchema = new Schema(
       },
     },
     createdBy: {
-      type: mongoose.SchemaTypes.ObjectId,
-      required: true,
-      ref: 'user',
+      type: Map,
+      of: String,
+      required: false,
+      default: {
+        name: 'user',
+        id: '1',
+        email: 'user@user.com'
+      },
     },
   },
   {timestamps: true},
